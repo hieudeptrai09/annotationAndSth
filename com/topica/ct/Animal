@@ -1,0 +1,29 @@
+package com.topica.ct;
+
+public class Animal {
+
+    private String species;
+    private Integer birthYear;
+    private static final int mysteriousProperty = 1;
+
+    public String getSpecies() {
+        return species;
+    }
+
+    public void setSpecies(String species) {
+        this.species = species;
+    }
+
+    public Integer getBirthYear() {
+        return birthYear;
+    }
+
+    public void setBirthYear(Integer birthYear) {
+        this.birthYear = birthYear;
+    }
+
+    public static int getMysteriousProperty() {
+        return mysteriousProperty;
+    }
+
+}
