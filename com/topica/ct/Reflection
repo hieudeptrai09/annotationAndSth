@@ -11,17 +11,17 @@ public class Reflection {
         Class<Animal> sth = Animal.class;
         Method listMethods[] = sth.getMethods();
         for (Method method : listMethods) {
+            System.out.print("Tên method là: ");
             System.out.println(method.getName());
-            System.out.println("****");
             Parameter listParas[] = method.getParameters();
             for (Parameter para : listParas) {
-                System.out.println(para.getName());
                 Class<?>[] types = method.getParameterTypes();
                 for (Class<?> type : types) {
+                    System.out.print("Kiểu tham số là: ");
                     System.out.println(type.getSimpleName());
                 }
             }
-            System.out.println("****");
+            System.out.println("Kiểu trả về là: ");
             System.out.println(method.getReturnType().getName());
             System.out.println("-------------");
         }
