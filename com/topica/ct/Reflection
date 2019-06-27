@@ -1,0 +1,37 @@
+package com.topica.ct;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+import java.lang.reflect.Parameter;
+
+public class Reflection {
+
+    public static void main(String[] args) throws NoSuchFieldException, IllegalArgumentException, IllegalAccessException {
+        Class<Animal> sth = Animal.class;
+        Method listMethods[] = sth.getMethods();
+        for (Method method : listMethods) {
+            System.out.println(method.getName());
+            System.out.println("****");
+            Parameter listParas[] = method.getParameters();
+            for (Parameter para : listParas) {
+                System.out.println(para.getName());
+                Class<?>[] types = method.getParameterTypes();
+                for (Class<?> type : types) {
+                    System.out.println(type.getSimpleName());
+                }
+            }
+            System.out.println("****");
+            System.out.println(method.getReturnType().getName());
+            System.out.println("-------------");
+        }
+        Field field = sth.getDeclaredField("mysteriousProperty");
+        field.setAccessible(true);
+        Field modifiersField = Field.class.getDeclaredField("modifiers");
+        modifiersField.setAccessible(true);
+        modifiersField.setInt(field, field.getModifiers() & (~Modifier.FINAL));
+        field.set(null, (Integer)2);
+        System.out.println(Animal.getMysteriousProperty());
+    }
+
+}
